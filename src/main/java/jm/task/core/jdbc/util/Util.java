@@ -19,7 +19,7 @@ public class Util {
             System.out.println("Connection succses");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            System.out.println("Connection fatal error");
+            System.out.println("Connection fatal error ddd");
         }
         return connection;
     }
