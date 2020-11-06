@@ -62,7 +62,6 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     public void removeUserById(long id) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        //User user = new User();
 
         try {
             connection = getConnection();
