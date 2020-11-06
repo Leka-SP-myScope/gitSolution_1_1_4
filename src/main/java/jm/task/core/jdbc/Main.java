@@ -15,8 +15,8 @@ public class Main {
         try {
             userService.createUsersTable();
             System.out.println("Table User create");
-            userService.dropUsersTable();
-            System.out.println("Table User drop");
+//            userService.dropUsersTable();
+//            System.out.println("Table User drop");
         } catch (SQLException e) {
             e.printStackTrace();
         }
