@@ -59,19 +59,26 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
     }
 
-    public void removeUserById(long id) {
+    public void removeUserById(long id) throws SQLException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-        User user = new User();
+        //User user = new User();
 
-//        try {
-//            connection = getConnection();
-//            //preparedStatement = connection.prepareStatement();
-//            //preparedStatement = connection.prepareStatement("DELETE FROM usertest. WHERE ID=?")
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-
+        try {
+            connection = getConnection();
+            preparedStatement = connection.prepareStatement("DELETE FROM USER WHERE IdUser=?");
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
     }
 
     public List<User> getAllUsers() throws SQLException {
