@@ -36,7 +36,24 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         }
     }
 
-    public void dropUsersTable() {
+    public void dropUsersTable() throws SQLException {
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = getConnection();
+            statement = connection.createStatement();
+            statement.executeUpdate("DROP TABLE IF EXISTS user");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
 
     }
 

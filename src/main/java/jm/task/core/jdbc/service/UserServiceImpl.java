@@ -14,8 +14,8 @@ public class UserServiceImpl extends UserDaoJDBCImpl implements UserService {
         super.createUsersTable();
     }
 
-    public void dropUsersTable() {
-
+    public void dropUsersTable() throws SQLException {
+        super.dropUsersTable();
     }
 
     public void saveUser(String name, String lastName, byte age) {
