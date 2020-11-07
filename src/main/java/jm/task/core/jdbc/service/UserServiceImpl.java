@@ -18,19 +18,19 @@ public class UserServiceImpl extends UserDaoJDBCImpl implements UserService {
         super.dropUsersTable();
     }
 
-    public void saveUser(String name, String lastName, byte age) {
-
+    public void saveUser(String name, String lastName, byte age) throws SQLException {
+        super.saveUser(name,lastName,age);
     }
 
-    public void removeUserById(long id) {
-
+    public void removeUserById(long id) throws SQLException {
+        super.removeUserById(id);
     }
 
-    public List<User> getAllUsers() {
-        return null;
+    public List<User> getAllUsers() throws SQLException {
+        return super.getAllUsers();
     }
 
-    public void cleanUsersTable() {
-
+    public void cleanUsersTable() throws SQLException {
+        super.cleanUsersTable();
     }
 }
