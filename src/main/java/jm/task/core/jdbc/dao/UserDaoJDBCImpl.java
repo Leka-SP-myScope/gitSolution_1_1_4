@@ -9,9 +9,6 @@ import java.util.List;
 
 public class UserDaoJDBCImpl extends Util implements UserDao {
 
-    public UserDaoJDBCImpl() {
-    }
-
     public void createUsersTable() throws SQLException {
         Connection connection = null;
         Statement statement = null;
