@@ -1,5 +1,8 @@
 package jm.task.core.jdbc.util;
 
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import javax.imageio.spi.ServiceRegistry;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,4 +23,15 @@ public class Util {
         }
         return connection;
     }
+
+    StandardServiceRegistryBuilder serviceRegistryBuilder = new StandardServiceRegistryBuilder();
+    serviceRegistryBuilder
+            .applySetting("hibernate.connection.datasource", "usertest")
+            .applySetting("hibernate.format_sql", "true")
+            .applySetting("hibernate.use_sql_comments", "true")
+            .applySetting("hibernate.hbm2ddl.auto", "create-drop");
+
+    ServiceRegistry serviceRegistry = serviceRegistryBuilder.build();
+
+
 }
