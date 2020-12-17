@@ -21,7 +21,7 @@ public class Main {
             userService.cleanUsersTable();
 
             userService.dropUsersTable();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
 public class UserDaoJDBCImpl extends Util implements UserDao {
 
     public void createUsersTable() throws SQLException {
@@ -152,4 +153,4 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             }
         }
     }
-}
+}*/
