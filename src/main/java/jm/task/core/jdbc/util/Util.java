@@ -12,13 +12,13 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class Util {
-    //private static final String DB_Driver = "com.mysql.cj.jdbc.Driver";
-    //private static final String DB_URL = "jdbc:mysql://localhost:3306/usertest?serverTimezone=UTC&useSSL=false";
-    //private static final String DB_UserName = "root";
-    //private static final String DB_Password = "ALEKA678022";
+    private static final String DB_Driver = "com.mysql.cj.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/usertest?serverTimezone=UTC&useSSL=false";
+    private static final String DB_UserName = "root";
+    private static final String DB_Password = "ALEKA678022";
     private static SessionFactory sessionFactory;
 
-    /*public Connection getConnection() {
+    public Connection getConnection() {
         Connection connection = null;
         try {
             Class.forName(DB_Driver);
@@ -27,13 +27,15 @@ public class Util {
             e.printStackTrace();
         }
         return connection;
-    }*/
+    }
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory != null) {
             try {
+                Configuration configuration = new Configuration();
+
                 Properties settings = new Properties();
-                settings.setProperty("connection.driver_class", "com.mysql.cj.jdbc.Driver");
+                settings.setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
                 settings.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/usertest");
                 settings.setProperty("hibernate.connection.username", "root");
                 settings.setProperty("hibernate.connection.password", "ALEKA678022");
@@ -41,9 +43,7 @@ public class Util {
                 settings.setProperty("hibernate.show_sql", "true");
                 settings.setProperty("hibernate.use_sql_comments", "true");
                 settings.setProperty("hibernate.format_sql", "true");
-                settings.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-
-                Configuration configuration = new Configuration();
+                settings.setProperty("hibernate.hbm2ddl.auto", "create");
 
                 configuration.addAnnotatedClass(User.class);
 
