@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -111,11 +112,14 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public List<User> getAllUsers() {
         Session session = null;
-        List userList;
+        List<User> userList;
 
         try {
             session = Util.getSessionFactory().openSession();
-            userList = session.createSQLQuery("SELECT * FROM USER").list();
+            Query<User> query  = session.createSQLQuery("SELECT * FROM USER");
+            userList = query.list();
+
+            //userList = session.createSQLQuery("SELECT * FROM USER").list();
         } finally {
             if (session != null) {
                 session.close();

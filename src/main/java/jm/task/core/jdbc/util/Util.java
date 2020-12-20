@@ -44,7 +44,7 @@ public class Util {
                 settings.setProperty("hibernate.show_sql", "true");
                 settings.setProperty("hibernate.use_sql_comments", "true");
                 settings.setProperty("hibernate.format_sql", "true");
-                settings.setProperty("hibernate.hbm2ddl.auto", "create");
+                settings.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 
                 configuration.addAnnotatedClass(User.class);
 
