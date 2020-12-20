@@ -30,13 +30,14 @@ public class Util {
     }
 
     public static SessionFactory getSessionFactory() {
-        if (sessionFactory != null) {
+        if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration();
 
                 Properties settings = new Properties();
                 settings.setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
-                settings.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/usertest");
+                settings.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/usertest" +
+                                        "?serverTimezone=UTC&useSSL=false");
                 settings.setProperty("hibernate.connection.username", "root");
                 settings.setProperty("hibernate.connection.password", "ALEKA678022");
                 settings.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");

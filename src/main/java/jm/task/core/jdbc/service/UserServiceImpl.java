@@ -5,7 +5,7 @@ import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
 
 
-import java.sql.SQLException;
+//import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public void saveUser(String name, String lastName, byte age) {
-        userDaoHibernate.saveUser(name,lastName,age);
+        userDaoHibernate.saveUser(name, lastName, age);
     }
 
     public void removeUserById(long id) {

@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 
-import javax.persistence.Query;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -21,7 +20,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = null;
         Transaction transaction = null;
 
-        try{
+        try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             NativeQuery sqlQuery = session.createSQLQuery("CREATE TABLE IF NOT EXISTS USER  ("
@@ -47,7 +46,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = null;
         Transaction transaction = null;
 
-        try{
+        try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             NativeQuery sqlQuery = session.createSQLQuery("DROP TABLE IF EXISTS USER");
@@ -72,7 +71,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            User user = new User(name,lastName,age);
+            User user = new User(name, lastName, age);
             session.save(user);
             transaction.commit();
         } catch (HibernateException e) {
@@ -92,7 +91,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = null;
         Transaction transaction = null;
 
-        try{
+        try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             User user = (User) session.get(User.class, id);
@@ -130,7 +129,7 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = null;
         Transaction transaction = null;
 
-        try{
+        try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             NativeQuery sqlQuery = session.createSQLQuery("TRUNCATE TABLE USER");
