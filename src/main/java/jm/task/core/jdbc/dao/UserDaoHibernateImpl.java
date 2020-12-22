@@ -25,7 +25,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             NativeQuery sqlQuery = session.createSQLQuery("CREATE TABLE IF NOT EXISTS USER  ("
-                    + "IdUser INT (6) PRIMARY KEY NOT NULL AUTO_INCREMENT, "
+                    + "Id INT (6) PRIMARY KEY NOT NULL AUTO_INCREMENT, "
                     + "Name VARCHAR (80) NOT NULL, "
                     + "LastName VARCHAR (80) NOT NULL, "
                     + "Age FLOAT (4) NOT NULL)");
@@ -112,14 +112,16 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public List<User> getAllUsers() {
         Session session = null;
+        Transaction transaction = null;
         List<User> userList;
 
         try {
             session = Util.getSessionFactory().openSession();
-            Query<User> query  = session.createSQLQuery("SELECT * FROM USER");
+            transaction = session.beginTransaction();
+            NativeQuery query  = session.createSQLQuery("SELECT * FROM USER");
+            query.addEntity(User.class);
             userList = query.list();
-
-            //userList = session.createSQLQuery("SELECT * FROM USER").list();
+            transaction.commit();
         } finally {
             if (session != null) {
                 session.close();
