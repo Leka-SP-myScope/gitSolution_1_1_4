@@ -6,15 +6,12 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
-import org.hibernate.query.Query;
 
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
     public UserDaoHibernateImpl() {
-
     }
-
 
     @Override
     public void createUsersTable() {
@@ -118,7 +115,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try {
             session = Util.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            NativeQuery query  = session.createSQLQuery("SELECT * FROM USER");
+            NativeQuery query = session.createSQLQuery("SELECT * FROM USER");
             query.addEntity(User.class);
             userList = query.list();
             transaction.commit();
